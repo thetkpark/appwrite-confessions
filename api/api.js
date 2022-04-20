@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const confessionsApi = axios.create({
-	baseURL: "http://localhost:3000/api/confessions"
+	baseURL: "/api/confessions"
 })
 
 export const createConfession = async (content) => {
