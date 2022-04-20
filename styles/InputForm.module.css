@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.submitButton {
+    width: 10%;
+}
+
+.textInput {
+    width: 90%;
+}

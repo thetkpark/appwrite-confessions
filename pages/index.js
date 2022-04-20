@@ -17,7 +17,7 @@ export default function Home() {
 	}
 
 	return (
-		<div>
+		<div className={styles.main}>
 			<InputForm onSubmitConfession={onSubmitConfession} />
 			{confessions.map((confession) => (
 				<Confession key={confession.$id} {...confession} />
