@@ -3,6 +3,7 @@ import InputForm from "../components/InputForm"
 import Confession from "../components/Confession"
 import { createConfession, getConfessions } from "../api/api"
 import styles from "../styles/Home.module.css"
+import { Grid, Box } from "@mui/material"
 
 export default function Home() {
 	const [confessions, setConfessions] = useState([])
@@ -12,6 +13,7 @@ export default function Home() {
 	}, [])
 
 	const onSubmitConfession = async (content) => {
+		if (content.length > 280) return
 		const con = await createConfession(content)
 		setConfessions([...confessions, con])
 	}
@@ -19,9 +21,14 @@ export default function Home() {
 	return (
 		<div className={styles.main}>
 			<InputForm onSubmitConfession={onSubmitConfession} />
-			{confessions.map((confession) => (
-				<Confession key={confession.$id} {...confession} />
-			))}
+			<Box sx={{ height: "50px" }} />
+			<Grid container spacing={3}>
+				{confessions.map((confession) => (
+					<Grid item xs={4} key={confession.$id}>
+						<Confession {...confession} />
+					</Grid>
+				))}
+			</Grid>
 		</div>
 	)
 }
