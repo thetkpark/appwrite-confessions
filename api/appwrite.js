@@ -10,7 +10,6 @@ client
 	.setEndpoint(process.env.APPWRITE_ENDPOINT) // Your API Endpoint
 	.setProject(process.env.APPWRITE_PROJECT) // Your project ID
 	.setKey(process.env.APPWRITE_SECRETKEY)
-	.setSelfSigned(true)
 
 const database = new sdk.Database(client)
 export const createConfession = async (content) => {
@@ -27,6 +26,15 @@ export const createConfession = async (content) => {
 }
 
 export const listConfession = async () => {
-	const docs = await database.listDocuments("625fd2e08e018ebdff44")
+	const docs = await database.listDocuments(
+		"625fd2e08e018ebdff44",
+		null,
+		null,
+		null,
+		null,
+		null,
+		["createAt"],
+		["DESC"]
+	)
 	return docs.documents
 }

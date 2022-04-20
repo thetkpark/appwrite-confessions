@@ -4,6 +4,7 @@ import Confession from "../components/Confession"
 import { createConfession, getConfessions } from "../api/api"
 import styles from "../styles/Home.module.css"
 import { Grid, Box } from "@mui/material"
+import dayjs from "dayjs"
 
 export default function Home({ fetchedConfessions }) {
 	const [confessions, setConfessions] = useState(fetchedConfessions)
@@ -11,7 +12,7 @@ export default function Home({ fetchedConfessions }) {
 	const onSubmitConfession = async (content) => {
 		if (content.length > 280) return
 		const con = await createConfession(content)
-		setConfessions([...confessions, con])
+		setConfessions([con, ...confessions])
 	}
 
 	return (
