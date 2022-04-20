@@ -6,6 +6,7 @@ client
 	.setEndpoint(process.env.APPWRITE_ENDPOINT) // Your API Endpoint
 	.setProject(process.env.APPWRITE_PROJECT) // Your project ID
 	.setKey(process.env.APPWRITE_SECRETKEY)
+	.setSelfSigned(true)
 
 const database = new sdk.Database(client)
 export const createConfession = async (content) => {
