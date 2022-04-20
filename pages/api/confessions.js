@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { createConfession, listConfession } from "../../api/appwrite"
+import { createConfession, listConfession } from "../../utils/appwrite"
 export default async function handler(req, res) {
 	if (req.method === "POST") {
 		const { content } = req.body

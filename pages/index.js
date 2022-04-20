@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import InputForm from "../components/InputForm"
 import Confession from "../components/Confession"
-import { createConfession, getConfessions } from "../api/api"
+import { createConfession, getConfessions } from "../utils/api"
 import styles from "../styles/Home.module.css"
 import { Grid, Box } from "@mui/material"
-import dayjs from "dayjs"
 
 export default function Home({ fetchedConfessions }) {
 	const [confessions, setConfessions] = useState(fetchedConfessions)
