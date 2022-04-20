@@ -1,4 +1,8 @@
 import sdk from "node-appwrite"
+import dayjs from "dayjs"
+import utc from "dayjs/plugin/utc"
+
+dayjs.extend(utc)
 
 const client = new sdk.Client()
 
@@ -14,7 +18,8 @@ export const createConfession = async (content) => {
 		process.env.APPWRITE_CONFESSIONS_COLLECTION_ID,
 		"unique()",
 		{
-			content
+			content,
+			createAt: dayjs.utc().toISOString()
 		}
 	)
 
