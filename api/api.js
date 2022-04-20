@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const confessionsApi = axios.create({
-	baseURL: "/api/confessions"
+	baseURL: `${process.env.API_ENDPOINT}/api/confessions`
 })
 
 export const createConfession = async (content) => {
