@@ -1,17 +1,16 @@
 import axios from "axios"
 
-const confessionsApi = axios.create({
-	baseURL: `${process.env.API_ENDPOINT}/api/confessions`
-})
+const baseURL = `${process.env.API_ENDPOINT}/api/confessions`
+console.log(baseURL)
 
 export const createConfession = async (content) => {
-	const response = await confessionsApi.post("", {
+	const response = await axios.post(baseURL, {
 		content
 	})
 	return response.data
 }
 
 export const getConfessions = async () => {
-	const response = await confessionsApi.get("")
+	const response = await axios.get(baseURL)
 	return response.data
 }
