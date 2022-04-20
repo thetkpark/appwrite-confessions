@@ -13,8 +13,13 @@ const InputForm = ({ onSubmitConfession }) => {
 		else setIsError(false)
 	}, [confession])
 
+	const formSubmit = (e) => {
+		e.preventDefault()
+		onSubmitConfession(confession)
+	}
+
 	return (
-		<div className={styles.container}>
+		<form className={styles.form} onSubmit={formSubmit}>
 			<TextField
 				label={`Your Confession (${confession.length}/280)`}
 				variant="standard"
@@ -28,12 +33,13 @@ const InputForm = ({ onSubmitConfession }) => {
 				variant="contained"
 				endIcon={<SendIcon />}
 				disabled={isError}
-				onClick={() => onSubmitConfession(confession)}
+				type="submit"
+				// onClick={() => onSubmitConfession(confession)}
 				className={styles.submitButton}
 			>
 				Submit
 			</Button>
-		</div>
+		</form>
 	)
 }
 

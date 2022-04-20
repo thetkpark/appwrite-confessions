@@ -5,12 +5,8 @@ import { createConfession, getConfessions } from "../api/api"
 import styles from "../styles/Home.module.css"
 import { Grid, Box } from "@mui/material"
 
-export default function Home() {
-	const [confessions, setConfessions] = useState([])
-
-	useEffect(() => {
-		getConfessions().then(setConfessions)
-	}, [])
+export default function Home({ fetchedConfessions }) {
+	const [confessions, setConfessions] = useState(fetchedConfessions)
 
 	const onSubmitConfession = async (content) => {
 		if (content.length > 280) return
@@ -31,4 +27,9 @@ export default function Home() {
 			</Grid>
 		</div>
 	)
+}
+
+export async function getServerSideProps(context) {
+	const confessions = await getConfessions()
+	return { props: { fetchedConfessions: confessions } }
 }
