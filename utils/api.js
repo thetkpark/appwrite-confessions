@@ -1,16 +1,16 @@
 import axios from "axios"
 
-const baseURL = `${process.env.API_ENDPOINT}/api/confessions`
-console.log(baseURL)
-
 export const createConfession = async (content) => {
-	const response = await axios.post(baseURL, {
+	console.log(baseURL)
+	const response = await axios.post("/api/confessions", {
 		content
 	})
 	return response.data
 }
 
 export const getConfessions = async () => {
-	const response = await axios.get(baseURL)
+	const response = await axios.get(
+		`${process.env.API_ENDPOINT}/api/confessions`
+	)
 	return response.data
 }
