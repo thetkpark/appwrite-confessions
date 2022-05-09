@@ -21,6 +21,5 @@ jobs:
       uses: docker/build-push-action@v3.0.0
       with:
         push: ${{ github.event_name != 'pull_request' }}
-        tags: latest
-        labels: thetkpark/appwrite-confessions
+        tags: thetkpark/appwrite-confessions
         platforms: linux/amd64
